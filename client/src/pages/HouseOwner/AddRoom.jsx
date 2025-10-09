@@ -24,7 +24,7 @@ const [inputs, setInputs] = useState({
 
   return (
     <form>
-      <Title align='left' font='outfit' title='Add House' subTitle='Fill in the details carefully and accurate House details, pricing, and amenities, to enhance the user booking experience.' />
+      <Title align='left' font='outfit' title='Add Room' subTitle='Fill in the details carefully and accurate House details, pricing, and amenities, to enhance the user booking experience.' />
 
       {/*Upload area for images*/}
       <p className='text-gray-800 mt-10'>Images</p>
@@ -67,7 +67,7 @@ const [inputs, setInputs] = useState({
               ))}
           </div>
             <button className='bg-primary text-white px-8 py-2 rounded mt-8 cursor-pointer'>
-                Add House
+                Add Room
             </button>
     </form>
   )
