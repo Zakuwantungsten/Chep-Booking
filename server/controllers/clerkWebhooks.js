@@ -10,10 +10,10 @@ const clerkWebhooks = async (req, res) =>{
 
         // GETTING HEADERS
         const headers = {
-            "svix-id": req.headers["svix-id"],
-            "svix-timestap": req.headers["svix-timestap"],
-            "svix-signature": req.headers["svix-signature"],
-        };
+      "svix-id": req.headers["svix-id"],
+      "svix-timestamp": req.headers["svix-timestamp"],
+      "svix-signature": req.headers["svix-signature"],
+    };
 
         // verifying headers
         await whook.verify(JSON.stringify(req.body), headers)
@@ -40,7 +40,7 @@ const clerkWebhooks = async (req, res) =>{
                  break;
             }
 
-             case "user.delete": {
+             case "user.deleted": {
                 await User.findByIdAndDelete(data.id);
                  break;
             }
