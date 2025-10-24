@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {assets, Places} from '../assets/assets'
+import { useAppContext } from '../context/AppContext'
 
 const HouseReg = () => {
+    const {setShowHouseReg} = useAppContext()
+
+    const [name, setName] = useState(" ")
+    const [address, setAddress] = useState("")
+    const [contact, setContact] = useState("")
+    const [place, setPlace] = useState("")
+
+
   return (
     <div className='fixed top-0 bottom-0 left-0 right-0 z-100 flex items-center justify-center bg-black/70'>
 
@@ -9,28 +18,28 @@ const HouseReg = () => {
             <img src={assets.regImage} alt="" className='w-1/2 rounded-xl hidden md:block' />
 
             <div className='relative flex flex-col items-center md:w-1/2 p-8 md:p-10 '>
-                <img src={assets.closeIcon} alt="" className='absolute top-4 right-4 h-4 w-4 cursor-pointer' />
+                <img src={assets.closeIcon} alt="" className='absolute top-4 right-4 h-4 w-4 cursor-pointer' onClick={()=>setShowHouseReg(false)} />
                 <p className='text-2xl font-semibold mt-6 '>Register Your House</p>
 
                     {/*HouseName*/}
                 <div className='w-full mt-4'>
                     <label htmlFor='name' className='font-medium text-gray-500'>House Name</label>
-                    <input id='name' type="text" placeholder='Type here' className='border border-gray-200 rounded w-full px-3 py-2.5 mt-1 outline-indigo-500 font-light' required />
+                    <input id='name' onChange={(e)=> setName(e.target.value)} value={name} type="text" placeholder='Type here' className='border border-gray-200 rounded w-full px-3 py-2.5 mt-1 outline-indigo-500 font-light' required />
                 </div>
                 <div className='w-full mt-4'>
                     <label htmlFor='contact' className='font-medium text-gray-500'>Phone</label>
-                    <input id='contact' type="text" placeholder='Type here' className='border border-gray-200 rounded w-full px-3 py-2.5 mt-1 outline-indigo-500 font-light' required />
+                    <input id='contact' onChange={(e)=> setContact(e.target.value)} value={contact} type="text" placeholder='Type here' className='border border-gray-200 rounded w-full px-3 py-2.5 mt-1 outline-indigo-500 font-light' required />
                 </div>
 
                  {/*House Address*/}
                 <div className='w-full mt-4'>
                     <label htmlFor='address' className='font-medium text-gray-500'>address</label>
-                    <input id='address' type="text" placeholder='Type here' className='border border-gray-200 rounded w-full px-3 py-2.5 mt-1 outline-indigo-500 font-light' required />
+                    <input id='address' onChange={(e)=> setAddress(e.target.value)} value={address} type="text" placeholder='Type here' className='border border-gray-200 rounded w-full px-3 py-2.5 mt-1 outline-indigo-500 font-light' required />
                 </div>
                 {/*Select Location Drop down*/}
                 <div className='w-full mt-4 max-w-60 mr-auto'>
                     <label htmlFor="place" className='font-medium text-gray-500'>Location</label>
-                    <select id="place" className='border border-gray-200 rounded w-full px-3 py-2.5 mt-1 outline-indigo-500 font-light' required>
+                    <select id="place" onChange={(e)=> setPlace(e.target.value)} value={place} className='border border-gray-200 rounded w-full px-3 py-2.5 mt-1 outline-indigo-500 font-light' required>
                         <option value="">Select Location</option>
                         {Places.map((place)=>(
                             <option key={{place}} value={place}>{place}</option>
