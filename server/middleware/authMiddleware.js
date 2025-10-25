@@ -1,8 +1,8 @@
 import User from "../models/user.js";
 
 // middle to check if the user is authenticated
-export const protect = async (req, resizeBy, next)=>{
-    const {userId} = req.auth;
+export const protect = async (req, res, next)=>{
+    const {userId} = req.auth();
     if(!userId){
         res.json({success: false, message: "not authenticated"})
     }else{

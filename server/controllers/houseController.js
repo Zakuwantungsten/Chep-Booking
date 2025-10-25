@@ -12,13 +12,13 @@ export const registerHouse = async (req, res)=>{
         if(house){
             return res.json({success: false, message: "House Already Registered" })
         }
-        await House.create({name, address, contact, city, owner});
+        await House.create({name, address, contact, place, owner});
          
         await User.findByIdAndUpdate(owner, {role: "houseOwner"})
 
         res.json({success: true, message: "House Registered Successfully"})
     } catch (error) {
-         res.json({success: false, message: message.error})
+         res.json({success: false, message: error.message})
     }
 }
 

@@ -30,11 +30,11 @@ const userSchema = mongoose.Schema({
 
     recentSearchedPlaces: [{
         type: String,
-        required: true,
+        required: false,
     }]
 
     
-},{timeStamps: true});
+},{timestamps: true});
 
 const User = mongoose.model("User", userSchema)
 

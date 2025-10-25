@@ -21,7 +21,12 @@ const App = () => {
 
   return (
     <div>
-      <Toaster/>
+      <Toaster
+        position="top-center"
+         toastOptions={{
+        style: { zIndex: 99999, marginTop: '60px' }, // avoid overlapping navbar
+         }}
+      />
      {!isOwnerPath && <Navbar />}
      {showHouseReg && <HouseReg/>}
      <div className='min-h-[70vh]'>
