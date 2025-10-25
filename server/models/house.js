@@ -24,6 +24,6 @@ const houseSchema = new mongoose.Schema({
     },
 }, {timestamps: true});
 
-const House = mongoose.model("house", houseSchema);
+const House = mongoose.model("House", houseSchema);
 
 export default House;

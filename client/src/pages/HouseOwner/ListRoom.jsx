@@ -1,12 +1,36 @@
 import React, { useState } from 'react'
-import {roomsDummyData} from '../../assets/assets'
 import Title from '../../components/Title'
+import { useAppContext } from '../../context/AppContext'
+import toast from 'react-hot-toast'
+import { useEffect } from 'react'
 
 
 const ListRoom = () => {
 
-  const [rooms, setRooms] = useState(roomsDummyData)
+  const [rooms, setRooms] = useState([])
+  const {axios, getToken, user} = useAppContext()
 
+  // fetch Rooms of the house owner
+  const fetchRooms = async () =>{
+    try {
+      const {data} = await axios.get('/api/rooms/owner', {headers: {Authorization: `Bearer ${await getToken()}`}})
+      if(data.success){
+        setRooms(data.rooms)
+      }else{
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+
+  //Toggle Availability of the room
+
+  useEffect(()=>{
+    if(user){
+      fetchRooms()
+    }
+  },[user])
 
   return (
     <div>
